@@ -8,7 +8,6 @@
   is  the sample application for the tutorial.
 </p>
 
-<a href="/static_pages/home">Home</a>
-<nl>
-<a href="/static_pages/help">Help</a>
+<p><a href="/static_pages/home">Home</a></p>
+<p><a href="/static_pages/help">Help</a></p>
 
