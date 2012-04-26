@@ -5,3 +5,7 @@
   Contact Ruby on Rails Tutorial about the sample app at the
   <a href="http://railstutorial.org/contact">contact page</a>.
 </p>
+
+<p><a href="/static_pages/home">Home</a></p>
+<p><a href="/static_pages/help">Help</a></p>
+<p><a href="/static_pages/about">About Us</a></p>
