@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-#include ApplicationHelper
+include ApplicationHelper
 
 describe "Static Pages" do
 
