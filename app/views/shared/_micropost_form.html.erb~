@@ -1,7 +1,29 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Dynamic Version by: Nannette Thacker -->
+<!-- http://www.shiningstar.net -->
+<!-- Original by :  Ronnie T. Moore -->
+<!-- Web Site:  The JavaScript Source -->
+<!-- Use one function for multiple text areas on a page -->
+<!-- Limit the number of characters per textarea -->
+<!-- Begin
+function textCounter(field,cntfield,maxlimit) {
+if (field.value.length > maxlimit) // if too long...trim it!
+field.value = field.value.substring(0, maxlimit);
+// otherwise, update 'characters left' counter
+else
+cntfield.value = maxlimit - field.value.length;
+}
+//  End -->
+</script>
+
 <%= form_for(@micropost) do |f| %>
-  <%= render 'shared/error_messages2', object: f.object %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <%= f.text_area :content, placeholder: "Compose new micropost...",  
+    onKeyDown=textCounter(document.getElementById('counter'), document.getElementById('micropost_content'), 140),
+    onKeyUp=textCounter(document.getElementById('counter'),document.getElementById('micropost_content'),140) %>
+    <p id="counter"></p>
+    <%= javascript_tag "document.write(140 - document.getElementById('micropost_content').value.length)" %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
