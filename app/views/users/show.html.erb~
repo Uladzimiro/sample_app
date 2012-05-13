@@ -7,6 +7,9 @@
         <%= @user.name %>
       </h1>
     </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
   </aside>
   
   <div class="span8">
@@ -16,6 +19,8 @@
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>
+    <% else %>
+      <p> You do not have any tweets </p>
     <% end %>
   </div>
 </div>

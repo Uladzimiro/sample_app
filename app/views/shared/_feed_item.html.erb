@@ -1,5 +1,7 @@
 <li id="<%= feed_item.id %>">
+<aside class="span1">
   <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+</aside>
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>  

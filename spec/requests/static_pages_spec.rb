@@ -20,8 +20,8 @@ describe "Static Pages" do
     it { should_not have_selector 'title', text: '| Home' }
     
     describe "for signed-in users" do
-      let(:user) { FactoryGirl.create(:user, email: "user@use.com") }
-      let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@gmail.com") }
+      let!(:user) { FactoryGirl.create(:user) }
+      let!(:wrong_user) { FactoryGirl.create(:user, email: "wrong@gmail.com") }
       before do
         FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
         FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")
@@ -70,6 +70,17 @@ describe "Static Pages" do
             page.should have_selector('li', text: tweet.content)
           end
         end
+      end
+      
+      describe "follower/following counts" do
+        let(:other_user) { FactoryGirl.create(:user, email: 'other@user.com') }
+        before do
+          other_user.follow!(user)
+          visit root_path
+        end
+        
+        it { should have_link("0 following", href: following_user_path(user)) }
+        it { should have_link("1 followers", href: followers_user_path(user)) }
       end
     end    
   end
